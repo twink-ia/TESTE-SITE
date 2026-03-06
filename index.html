@@ -2,145 +2,194 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Scripts Hub - Scripts de EXPLOIT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Roblox Scripts Hub - Admin SEANSCRIPTS</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: #0a0a0f;
             color: #fff;
             min-height: 100vh;
         }
 
         /* Navbar */
         .navbar {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            background: #12121a;
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid #2a2a3a;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .logo img {
-            width: 40px;
-            height: 40px;
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #ff3366;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .logo h1 {
-            font-size: 1.5rem;
-            background: linear-gradient(45deg, #ff3366, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ff3366;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 20px;
         }
 
         .nav-links a {
             color: #fff;
             text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 20px;
             transition: 0.3s;
+            cursor: pointer;
         }
 
-        .nav-links a:hover {
-            color: #ff3366;
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #ff3366;
         }
 
-        /* Modal de Login/Cadastro */
+        /* Admin Badge */
+        .admin-badge {
+            background: #ff3366;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        /* Menu Mobile */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: #12121a;
+            padding: 16px;
+            flex-direction: column;
+            gap: 12px;
+            border-bottom: 1px solid #2a2a3a;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            background: #1e1e2a;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
-            justify-content: center;
-            align-items: center;
+            padding: 16px;
+            overflow-y: auto;
         }
 
         .modal.active {
             display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-content {
-            background: #1f1f3a;
-            padding: 2rem;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 400px;
+            background: #1a1a25;
+            border-radius: 24px;
+            padding: 24px;
+            width: 100%;
+            max-width: 500px;
             position: relative;
-            animation: modalSlide 0.3s ease;
-        }
-
-        @keyframes modalSlide {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .close-modal {
             position: absolute;
-            top: 15px;
+            top: 16px;
             right: 20px;
-            font-size: 1.5rem;
+            font-size: 28px;
             cursor: pointer;
             color: #888;
-            transition: 0.3s;
-        }
-
-        .close-modal:hover {
-            color: #ff3366;
         }
 
         .modal-tabs {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 8px;
+            margin: 20px 0 24px;
+            background: #252535;
+            padding: 4px;
+            border-radius: 30px;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             background: none;
             border: none;
             color: #888;
-            font-size: 1.1rem;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 30px;
             cursor: pointer;
-            border-bottom: 2px solid transparent;
             transition: 0.3s;
         }
 
         .tab-btn.active {
-            color: #ff3366;
-            border-bottom-color: #ff3366;
+            background: #ff3366;
+            color: #fff;
         }
 
         .tab-pane {
@@ -152,254 +201,316 @@
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 16px;
         }
 
-        .form-group input {
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
+            padding: 14px 16px;
+            background: #252535;
+            border: 2px solid #2f2f40;
+            border-radius: 12px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 15px;
         }
 
-        .form-group input:focus {
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #ff3366;
         }
 
         .btn {
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            padding: 14px;
+            background: #ff3366;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 51, 102, 0.4);
+        .btn-secondary {
+            background: #252535;
+            margin-top: 8px;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
         }
 
         /* Main Content */
         .main-content {
-            margin-top: 80px;
-            padding: 2rem 5%;
+            margin-top: 70px;
+            padding: 16px;
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 3rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            margin-bottom: 3rem;
-            backdrop-filter: blur(10px);
+            padding: 24px 16px;
+            background: linear-gradient(145deg, #12121a, #1a1a25);
+            border-radius: 24px;
+            margin-bottom: 24px;
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ff3366, #ff6b6b, #ffb347);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: #ff3366;
         }
 
         .hero p {
-            color: #b0b0b0;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            color: #aaa;
+            font-size: 14px;
         }
 
         /* Search Bar */
         .search-container {
-            max-width: 600px;
-            margin: 2rem auto;
+            margin: 20px 0;
+        }
+
+        .search-box {
             position: relative;
         }
 
-        .search-container input {
+        .search-box input {
             width: 100%;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
+            padding: 14px 16px;
+            background: #1a1a25;
+            border: 2px solid #2a2a3a;
+            border-radius: 30px;
             color: #fff;
-            font-size: 1.1rem;
-            transition: 0.3s;
+            font-size: 15px;
         }
 
-        .search-container input:focus {
+        .search-box input:focus {
             outline: none;
             border-color: #ff3366;
-            background: rgba(255, 255, 255, 0.15);
         }
 
-        .search-container i {
+        .search-icon {
             position: absolute;
-            right: 20px;
+            right: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #888;
+            font-size: 20px;
+        }
+
+        /* Admin Panel Button */
+        .admin-panel-btn {
+            background: #ff3366;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         /* Categories */
         .categories {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 2rem 0;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 8px 0 16px;
+            margin-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
         }
 
         .category-btn {
             padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #1a1a25;
             border: none;
-            border-radius: 25px;
-            color: #fff;
+            border-radius: 30px;
+            color: #aaa;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .category-btn:hover,
         .category-btn.active {
             background: #ff3366;
-            transform: translateY(-2px);
+            color: #fff;
         }
 
         /* Scripts Grid */
         .scripts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
         }
 
         .script-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 1.5rem;
+            background: #12121a;
+            border-radius: 20px;
+            padding: 18px;
+            border: 1px solid #252535;
+            position: relative;
+        }
+
+        .script-card.admin-view {
+            border-left: 4px solid #ff3366;
+        }
+
+        .admin-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .admin-btn {
+            background: #252535;
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
             transition: 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.5s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .admin-btn.edit {
+            background: #007bff;
         }
 
-        .script-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff3366;
-            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
+        .admin-btn.delete {
+            background: #dc3545;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.1);
         }
 
         .script-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 1rem;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
         .script-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #ff3366, #ff6b6b);
-            border-radius: 10px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(145deg, #ff3366, #ff6b6b);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 20px;
             font-weight: bold;
         }
 
+        .script-info {
+            flex: 1;
+        }
+
         .script-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+            font-size: 16px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .script-category {
-            font-size: 0.8rem;
-            color: #888;
+            font-size: 12px;
+            color: #ff3366;
+            background: rgba(255, 51, 102, 0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
         }
 
         .script-description {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            color: #aaa;
+            font-size: 13px;
             line-height: 1.5;
+            margin-bottom: 12px;
         }
 
         .script-stats {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 13px;
             color: #888;
         }
 
-        .script-stats span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .script-code {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 1rem;
+        .script-code-preview {
+            background: #0a0a0f;
+            border-radius: 12px;
+            padding: 12px;
             font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 12px;
             color: #0f0;
-            margin-bottom: 1rem;
-            max-height: 100px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .script-code::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+            margin-bottom: 12px;
+            white-space: nowrap;
+            overflow-x: auto;
+            border: 1px solid #252535;
         }
 
         .script-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .copy-btn,
-        .download-btn {
+        .copy-btn, .download-btn {
             flex: 1;
-            padding: 8px;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
-            font-size: 0.9rem;
         }
 
         .copy-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: #252535;
             color: #fff;
         }
 
@@ -408,26 +519,15 @@
             color: #fff;
         }
 
-        .copy-btn:hover,
-        .download-btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
+        .copy-btn:active, .download-btn:active {
+            transform: scale(0.96);
         }
 
         /* Loading */
         .loading {
-            text-align: center;
-            padding: 2rem;
             display: none;
+            text-align: center;
+            padding: 40px 20px;
         }
 
         .loading.active {
@@ -435,61 +535,43 @@
         }
 
         .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 51, 102, 0.3);
+            width: 40px;
+            height: 40px;
+            border: 3px solid #252535;
             border-top-color: #ff3366;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 0 auto;
+            margin: 0 auto 16px;
         }
 
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .scripts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Toast Notification */
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 20px;
-            right: 20px;
-            background: #1f1f3a;
+            left: 16px;
+            right: 16px;
+            background: #1a1a25;
             color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 10px;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 14px;
             border-left: 4px solid #ff3366;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            transform: translateX(400px);
+            transform: translateY(100px);
             transition: 0.3s;
             z-index: 3000;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .toast.active {
-            transform: translateX(0);
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .toast.success {
@@ -499,41 +581,121 @@
         .toast.error {
             border-left-color: #ff3366;
         }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            font-size: 15px;
+        }
+
+        /* User Info */
+        .user-info {
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .user-info.active {
+            display: flex;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: #ff3366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: none;
+            border: 1px solid #ff3366;
+            color: #ff3366;
+            padding: 4px 8px;
+            border-radius: 16px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 16px;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #1a1a25;
+            margin-top: 20px;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: #28a745;
+            color: #fff;
+            margin-left: 8px;
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ff3366'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3ER%3C/text%3E%3C/svg%3E" alt="Logo">
-            <h1>Roblox Scripts Hub</h1>
+            <div class="logo-icon">R</div>
+            <h1>RBX Scripts</h1>
         </div>
-        <div class="nav-links">
-            <a href="#">Início</a>
-            <a href="#">Scripts</a>
-            <a href="#">Categorias</a>
-            <a href="#" id="loginBtn">Entrar</a>
+        
+        <div class="nav-links" id="navLinks">
+            <a class="active" onclick="changePage('home')">Início</a>
+            <a onclick="changePage('scripts')">Scripts</a>
+            <a onclick="openModal()">Entrar</a>
         </div>
+
+        <div class="user-info" id="userInfo">
+            <div class="user-avatar" id="userAvatar"></div>
+            <span id="userName"></span>
+            <span class="admin-badge" id="adminBadge" style="display: none;">ADMIN</span>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </div>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a onclick="changePage('home'); toggleMenu()">Início</a>
+        <a onclick="changePage('scripts'); toggleMenu()">Scripts</a>
+        <a onclick="openModal(); toggleMenu()">Entrar</a>
+    </div>
 
     <!-- Modal de Login/Cadastro -->
     <div class="modal" id="authModal">
         <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
             
+            <div style="text-align: center; margin-bottom: 16px;">
+                <div style="font-size: 40px; color: #ff3366;">🎮</div>
+                <h3 style="color: #fff;">Bem-vindo!</h3>
+            </div>
+
             <div class="modal-tabs">
-                <button class="tab-btn active" data-tab="login">Login</button>
-                <button class="tab-btn" data-tab="register">Cadastrar</button>
+                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchTab('register')">Cadastrar</button>
             </div>
 
             <!-- Login Form -->
             <div class="tab-pane active" id="loginTab">
-                <form id="loginForm">
+                <form onsubmit="handleLogin(event)">
                     <div class="form-group">
-                        <input type="text" placeholder="Usuário" required>
+                        <input type="text" id="loginUsername" placeholder="Usuário" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Senha" required>
+                        <input type="password" id="loginPassword" placeholder="Senha" required>
                     </div>
                     <button type="submit" class="btn">Entrar</button>
                 </form>
@@ -541,149 +703,605 @@
 
             <!-- Register Form -->
             <div class="tab-pane" id="registerTab">
-                <form id="registerForm">
+                <form onsubmit="handleRegister(event)">
                     <div class="form-group">
-                        <input type="text" placeholder="Nome de usuário" required>
+                        <input type="text" id="regUsername" placeholder="Nome de usuário" required minlength="3">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email" required>
+                        <input type="email" id="regEmail" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Senha" required>
+                        <input type="password" id="regPassword" placeholder="Senha" required minlength="4">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Confirmar senha" required>
+                        <input type="password" id="regConfirm" placeholder="Confirmar senha" required>
                     </div>
-                    <button type="submit" class="btn">Cadastrar</button>
+                    <button type="submit" class="btn">Criar Conta</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h2>Scripts de EXPLOIT para Roblox</h2>
-            <p>Encontre os melhores scripts para seus jogos favoritos no Roblox. Todos os scripts são testados e atualizados regularmente.</p>
+    <!-- Modal de Admin para Adicionar/Editar Scripts -->
+    <div class="modal" id="adminScriptModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAdminModal()">&times;</span>
             
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Pesquisar scripts...">
-                <i>🔍</i>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 40px; color: #ff3366;">📝</div>
+                <h3 style="color: #fff;" id="modalTitle">Adicionar Novo Script</h3>
             </div>
-        </section>
+
+            <form onsubmit="saveScript(event)" id="scriptForm">
+                <input type="hidden" id="scriptId" value="">
+                
+                <div class="form-group">
+                    <label>Nome do Script</label>
+                    <input type="text" id="scriptName" placeholder="Ex: Auto Farm Pet Sim" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <select id="scriptCategory" required>
+                        <option value="farming">Farming</option>
+                        <option value="pvp">PvP</option>
+                        <option value="fly">Fly</option>
+                        <option value="aimbot">Aimbot</option>
+                        <option value="esp">ESP</option>
+                        <option value="dupe">Dupe</option>
+                        <option value="teleport">Teleport</option>
+                        <option value="other">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea id="scriptDescription" placeholder="Descreva o que o script faz..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Código do Script</label>
+                    <textarea id="scriptCode" placeholder="Cole o código do script aqui..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn" id="saveScriptBtn">Salvar Script</button>
+                <button type="button" class="btn btn-secondary" onclick="closeAdminModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h2>🔥 Scripts de EXPLOIT Roblox</h2>
+            <p>Os melhores scripts atualizados diariamente</p>
+        </div>
+
+        <!-- Admin Panel Button (só aparece para SEANSCRIPTS) -->
+        <div id="adminPanelBtn" style="display: none;">
+            <button class="admin-panel-btn" onclick="openAdminModal()">
+                <span>➕</span> Adicionar Novo Script
+            </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Pesquisar scripts..." onkeyup="filterScripts()">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
 
         <!-- Categories -->
-        <div class="categories">
-            <button class="category-btn active" data-category="all">Todos</button>
-            <button class="category-btn" data-category="farming">Farming</button>
-            <button class="category-btn" data-category="pvp">PvP</button>
-            <button class="category-btn" data-category="teleport">Teleport</button>
-            <button class="category-btn" data-category="fly">Fly</button>
-            <button class="category-btn" data-category="aimbot">Aimbot</button>
-            <button class="category-btn" data-category="esp">ESP</button>
-            <button class="category-btn" data-category="dupe">Dupe</button>
+        <div class="categories" id="categories">
+            <button class="category-btn active" onclick="filterCategory('all')">Todos</button>
+            <button class="category-btn" onclick="filterCategory('farming')">Farming</button>
+            <button class="category-btn" onclick="filterCategory('pvp')">PvP</button>
+            <button class="category-btn" onclick="filterCategory('fly')">Fly</button>
+            <button class="category-btn" onclick="filterCategory('aimbot')">Aimbot</button>
+            <button class="category-btn" onclick="filterCategory('esp')">ESP</button>
+            <button class="category-btn" onclick="filterCategory('dupe')">Dupe</button>
+            <button class="category-btn" onclick="filterCategory('teleport')">Teleport</button>
         </div>
 
         <!-- Loading -->
         <div class="loading" id="loading">
             <div class="loading-spinner"></div>
-            <p style="margin-top: 1rem;">Carregando scripts...</p>
+            <p>Carregando scripts...</p>
         </div>
 
         <!-- Scripts Grid -->
-        <div class="scripts-grid" id="scriptsGrid">
-            <!-- Scripts will be loaded here via JavaScript -->
-        </div>
+        <div class="scripts-grid" id="scriptsGrid"></div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Roblox Scripts Hub - Todos os direitos reservados</p>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem;">Apenas para fins educacionais</p>
-    </footer>
 
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
+    <footer>
+        <p>© 2024 Roblox Scripts Hub - Para fins educacionais</p>
+    </footer>
+
     <script>
-        // Mock data - scripts
-        const scripts = [
+        // Dados iniciais dos scripts
+        let scripts = [
             {
                 id: 1,
-                name: "Auto Farm Pet Simulator",
+                name: "Auto Farm Pet Sim",
                 category: "farming",
-                description: "Farm automática para Pet Simulator X. Coleta moedas e diamantes automaticamente.",
-                code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/user/petsim/main.lua"))()',
-                downloads: 15234,
-                rating: 4.8
+                description: "Farm automática para Pet Simulator - Coleta moedas e diamantes automaticamente",
+                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/abc123"))()',
+                downloads: "15.2k",
+                rating: "4.8",
+                addedBy: "SEANSCRIPTS",
+                date: "2024-01-15"
             },
             {
                 id: 2,
                 name: "Aimbot Arsenal",
                 category: "aimbot",
-                description: "Aimbot perfeito para Arsenal. Mira automática e detecção de inimigos.",
-                code: 'local player = game.Players.LocalPlayer; while wait() do if player.Character then end end',
-                downloads: 8923,
-                rating: 4.5
+                description: "Aimbot perfeito para Arsenal com detecção automática",
+                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/def456"))()',
+                downloads: "8.9k",
+                rating: "4.5",
+                addedBy: "SEANSCRIPTS",
+                date: "2024-01-20"
             },
             {
                 id: 3,
-                name: "ESP Wallhack",
+                name: "ESP Player",
                 category: "esp",
-                description: "ESP para todos os jogadores. Mostra posições através das paredes.",
-                code: 'for _,v in pairs(game.Players:GetPlayers()) do if v ~= player then end end',
-                downloads: 6712,
-                rating: 4.6
+                description: "Veja jogadores através das paredes com ESP avançado",
+                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/ghi789"))()',
+                downloads: "6.7k",
+                rating: "4.6",
+                addedBy: "admin",
+                date: "2024-02-01"
             },
             {
                 id: 4,
-                name: "Fly Script",
+                name: "Fly Ultimate",
                 category: "fly",
-                description: "Voe por todo o mapa em qualquer jogo. Controles: Espaço para subir, Shift para descer.",
-                code: 'local plr = game.Players.LocalPlayer; local mouse = plr:GetMouse(); repeat wait() until plr.Character',
-                downloads: 21456,
-                rating: 4.9
-            },
-            {
-                id: 5,
-                name: "Teleport Hub",
-                category: "teleport",
-                description: "Teleporte para qualquer localização do mapa. Salve suas posições favoritas.",
-                code: 'game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,50,0)',
-                downloads: 7845,
-                rating: 4.3
-            },
-            {
-                id: 6,
-                name: "Dupe Script",
-                category: "dupe",
-                description: "Duplicação de itens em jogos específicos. Use com cuidado.",
-                code: 'local item = game:GetService("ReplicatedStorage"):FindFirstChild("Item") if item then item:Clone() end',
-                downloads: 3456,
-                rating: 4.1
+                description: "Voe em qualquer jogo com controles personalizáveis",
+                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/jkl012"))()',
+                downloads: "21.4k",
+                rating: "4.9",
+                addedBy: "SEANSCRIPTS",
+                date: "2024-02-10"
             }
         ];
 
-        // DOM Elements
-        const scriptsGrid = document.getElementById('scriptsGrid');
-        const searchInput = document.getElementById('searchInput');
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const loading = document.getElementById('loading');
-        const authModal = document.getElementById('authModal');
-        const loginBtn = document.getElementById('loginBtn');
-        const closeModal = document.getElementById('closeModal');
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const toast = document.getElementById('toast');
-
-        // Current filter
+        // Variáveis globais
+        let currentUser = null;
         let currentCategory = 'all';
         let currentSearch = '';
 
-        // Display scripts
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            loadScripts();
+            checkSavedUser();
+        });
+
+        // Funções de UI
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        function changePage(page) {
+            // Implementar mudança de página se necessário
+            console.log('Mudando para página:', page);
+        }
+
+        // Funções do Modal de Auth
+        function openModal() {
+            document.getElementById('authModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            document.getElementById(tab + 'Tab').classList.add('active');
+        }
+
+        // Funções de Autenticação
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!username || !password) {
+                showToast('Preencha todos os campos!', 'error');
+                return;
+            }
+
+            // Login especial para SEANSCRIPTS
+            if (username === 'SEANSCRIPTS' && password === '02/10/2011') {
+                const adminUser = {
+                    username: 'SEANSCRIPTS',
+                    isAdmin: true,
+                    avatar: 'S'
+                };
+                currentUser = adminUser;
+                localStorage.setItem('currentUser', JSON.stringify(adminUser));
+                updateUIForUser(adminUser);
+                showToast('✅ Bem-vindo ADMIN SEANSCRIPTS!', 'success');
+                closeModal();
+                return;
+            }
+
+            // Login normal
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                updateUIForUser(user);
+                showToast('Login realizado com sucesso!', 'success');
+                closeModal();
+            } else {
+                showToast('Usuário ou senha inválidos!', 'error');
+            }
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regConfirm').value;
+
+            if (!username || !email || !password || !confirm) {
+                showToast('Preencha todos os campos!', 'error');
+                return;
+            }
+
+            if (password !== confirm) {
+                showToast('As senhas não coincidem!', 'error');
+                return;
+            }
+
+            if (username.length < 3) {
+                showToast('Usuário deve ter pelo menos 3 caracteres!', 'error');
+                return;
+            }
+
+            if (password.length < 4) {
+                showToast('Senha deve ter pelo menos 4 caracteres!', 'error');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            if (users.some(u => u.username === username)) {
+                showToast('Usuário já existe!', 'error');
+                return;
+            }
+
+            const newUser = {
+                username: username,
+                email: email,
+                password: password,
+                avatar: username.charAt(0).toUpperCase(),
+                isAdmin: false
+            };
+
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            showToast('Conta criada com sucesso! Faça login.', 'success');
+            switchTab('login');
+            document.getElementById('loginUsername').value = username;
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateUIForUser(null);
+            showToast('Logout realizado!', 'success');
+        }
+
+        function checkSavedUser() {
+            const saved = localStorage.getItem('currentUser');
+            if (saved) {
+                currentUser = JSON.parse(saved);
+                updateUIForUser(currentUser);
+            }
+        }
+
+        function updateUIForUser(user) {
+            const navLinks = document.getElementById('navLinks');
+            const userInfo = document.getElementById('userInfo');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const adminBadge = document.getElementById('adminBadge');
+            const adminPanelBtn = document.getElementById('adminPanelBtn');
+
+            if (user) {
+                navLinks.style.display = 'none';
+                userInfo.classList.add('active');
+                document.getElementById('userAvatar').textContent = user.avatar || user.username.charAt(0).toUpperCase();
+                document.getElementById('userName').textContent = user.username;
+                
+                // Mostrar badge de admin para SEANSCRIPTS
+                if (user.username === 'SEANSCRIPTS') {
+                    adminBadge.style.display = 'inline';
+                    adminPanelBtn.style.display = 'block';
+                } else {
+                    adminBadge.style.display = 'none';
+                    adminPanelBtn.style.display = 'none';
+                }
+                
+                mobileMenu.innerHTML = `
+                    <a onclick="changePage('home'); toggleMenu()">Início</a>
+                    <a onclick="changePage('scripts'); toggleMenu()">Scripts</a>
+                    ${user.username === 'SEANSCRIPTS' ? '<a onclick="openAdminModal(); toggleMenu()">➕ Admin</a>' : ''}
+                    <a onclick="logout(); toggleMenu()">Sair</a>
+                `;
+            } else {
+                navLinks.style.display = 'flex';
+                userInfo.classList.remove('active');
+                adminPanelBtn.style.display = 'none';
+                
+                mobileMenu.innerHTML = `
+                    <a onclick="changePage('home'); toggleMenu()">Início</a>
+                    <a onclick="changePage('scripts'); toggleMenu()">Scripts</a>
+                    <a onclick="openModal(); toggleMenu()">Entrar</a>
+                `;
+            }
+            
+            displayScripts();
+        }
+
+        // Funções de Scripts
+        function loadScripts() {
+            const saved = localStorage.getItem('scripts');
+            if (saved) {
+                scripts = JSON.parse(saved);
+            } else {
+                saveScripts();
+            }
+        }
+
+        function saveScripts() {
+            localStorage.setItem('scripts', JSON.stringify(scripts));
+        }
+
         function displayScripts() {
+            const loading = document.getElementById('loading');
+            const grid = document.getElementById('scriptsGrid');
+
             loading.classList.add('active');
+
+            setTimeout(() => {
+                const filtered = scripts.filter(script => {
+                    const matchCategory = currentCategory === 'all' || script.category === currentCategory;
+                    const matchSearch = script.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                                       script.description.toLowerCase().includes(currentSearch.toLowerCase());
+                    return matchCategory && matchSearch;
+                });
+
+                if (filtered.length === 0) {
+                    grid.innerHTML = '<div class="no-results">Nenhum script encontrado 😕</div>';
+                } else {
+                    grid.innerHTML = filtered.map(script => {
+                        const isAdmin = currentUser && currentUser.username === 'SEANSCRIPTS';
+                        
+                        return `
+                        <div class="script-card ${isAdmin ? 'admin-view' : ''}">
+                            ${isAdmin ? `
+                                <div class="admin-controls">
+                                    <button class="admin-btn edit" onclick="editScript(${script.id})" title="Editar">✏️</button>
+                                    <button class="admin-btn delete" onclick="deleteScript(${script.id})" title="Deletar">🗑️</button>
+                                </div>
+                            ` : ''}
+                            
+                            <div class="script-header">
+                                <div class="script-icon">${script.name.charAt(0)}</div>
+                                <div class="script-info">
+                                    <h3>
+                                        ${script.name}
+                                        ${script.addedBy === 'SEANSCRIPTS' ? '<span class="status-badge">Oficial</span>' : ''}
+                                    </h3>
+                                    <span class="script-category">#${script.category}</span>
+                                </div>
+                            </div>
+                            
+                            <p class="script-description">${script.description}</p>
+                            
+                            <div class="script-stats">
+                                <span>⬇️ ${script.downloads}</span>
+                                <span>⭐ ${script.rating}</span>
+                                <span>📅 ${script.date || '2024'}</span>
+                            </div>
+                            
+                            <div class="script-code-preview">${script.code}</div>
+                            
+                            <div class="script-actions">
+                                <button class="copy-btn" onclick="copyScript('${script.code}')">📋 Copiar</button>
+                                <button class="download-btn" onclick="downloadScript('${script.name}', '${script.code}')">⬇️ Download</button>
+                            </div>
+                        </div>
+                    `}).join('');
+                }
+
+                loading.classList.remove('active');
+            }, 300);
+        }
+
+        // Funções Admin
+        function openAdminModal(scriptId = null) {
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            const modal = document.getElementById('adminScriptModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const form = document.getElementById('scriptForm');
+            
+            if (scriptId) {
+                // Editar script existente
+                const script = scripts.find(s => s.id === scriptId);
+                if (script) {
+                    modalTitle.textContent = 'Editar Script';
+                    document.getElementById('scriptId').value = script.id;
+                    document.getElementById('scriptName').value = script.name;
+                    document.getElementById('scriptCategory').value = script.category;
+                    document.getElementById('scriptDescription').value = script.description;
+                    document.getElementById('scriptCode').value = script.code;
+                }
+            } else {
+                // Novo script
+                modalTitle.textContent = 'Adicionar Novo Script';
+                form.reset();
+                document.getElementById('scriptId').value = '';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminScriptModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function saveScript(event) {
+            event.preventDefault();
+
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            const scriptId = document.getElementById('scriptId').value;
+            const scriptData = {
+                name: document.getElementById('scriptName').value,
+                category: document.getElementById('scriptCategory').value,
+                description: document.getElementById('scriptDescription').value,
+                code: document.getElementById('scriptCode').value,
+                downloads: "0",
+                rating: "5.0",
+                addedBy: currentUser.username,
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            if (scriptId) {
+                // Editar
+                const index = scripts.findIndex(s => s.id === parseInt(scriptId));
+                if (index !== -1) {
+                    scripts[index] = { ...scripts[index], ...scriptData };
+                    showToast('Script atualizado com sucesso!', 'success');
+                }
+            } else {
+                // Novo
+                const newId = Math.max(...scripts.map(s => s.id), 0) + 1;
+                scripts.push({ id: newId, ...scriptData });
+                showToast('Script adicionado com sucesso!', 'success');
+            }
+
+            saveScripts();
+            displayScripts();
+            closeAdminModal();
+        }
+
+        function editScript(id) {
+            openAdminModal(id);
+        }
+
+        function deleteScript(id) {
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            if (confirm('Tem certeza que deseja deletar este script?')) {
+                scripts = scripts.filter(s => s.id !== id);
+                saveScripts();
+                displayScripts();
+                showToast('Script deletado com sucesso!', 'success');
+            }
+        }
+
+        // Funções de filtro
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === category || 
+                    (category === 'all' && btn.textContent === 'Todos')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            displayScripts();
+        }
+
+        function filterScripts() {
+            currentSearch = document.getElementById('searchInput').value;
+            displayScripts();
+        }
+
+        // Funções utilitárias
+        function copyScript(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                showToast('✅ Script copiado!', 'success');
+            }).catch(() => {
+                showToast('❌ Erro ao copiar', 'error');
+            });
+        }
+
+        function downloadScript(name, code) {
+            const blob = new Blob([code], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${name.replace(/\s+/g, '_')}.lua`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('⬇️ Download iniciado!', 'success');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('active');
             
             setTimeout(() => {
-                const filteredScripts = scripts.filter(scri
+                toast.classList.remove('active');
+            }, 2000);
+        }
+
+        // Fechar modais ao clicar fora
+        window.onclick = function(event) {
+            const authModal = document.getElementById('authModal');
+            const adminModal = document.getElementById('adminScriptModal');
+            
+            if (event.target === authModal) {
+                closeModal();
+            }
+            if (event.target === adminModal) {
+                closeAdminModal();
+            }
+        }
+    </script>
+</body>
+</html>
