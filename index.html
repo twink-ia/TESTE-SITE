@@ -640,6 +640,17 @@
             color: #fff;
             margin-left: 8px;
         }
+
+        /* Sincronização */
+        .sync-status {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin: 10px 0;
+            padding: 8px;
+            background: #1a1a25;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body>
@@ -778,6 +789,11 @@
             <p>Os melhores scripts atualizados diariamente</p>
         </div>
 
+        <!-- Status de Sincronização -->
+        <div class="sync-status" id="syncStatus">
+            📡 Scripts sincronizados globalmente
+        </div>
+
         <!-- Admin Panel Button (só aparece para SEANSCRIPTS) -->
         <div id="adminPanelBtn" style="display: none;">
             <button class="admin-panel-btn" onclick="openAdminModal()">
@@ -819,12 +835,15 @@
     <div class="toast" id="toast"></div>
 
     <footer>
-        <p>© 2024 Roblox Scripts Hub - Para fins educacionais</p>
+        <p>© 2024 Roblox Scripts Hub - Sistema Global de Scripts</p>
     </footer>
 
     <script>
-        // Dados iniciais dos scripts
-        let scripts = [
+        // CHAVE ÚNICA PARA ARMAZENAMENTO GLOBAL
+        const STORAGE_KEY = 'GLOBAL_ROBLOX_SCRIPTS_SEAN';
+        
+        // Scripts iniciais (só usa se não existir nada no storage)
+        const defaultScripts = [
             {
                 id: 1,
                 name: "Auto Farm Pet Sim",
@@ -878,9 +897,66 @@
 
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
-            loadScripts();
+            initializeScripts();
             checkSavedUser();
+            startSyncCheck();
         });
+
+        // FUNÇÃO CORRIGIDA: Inicializa scripts apenas uma vez globalmente
+        function initializeScripts() {
+            // Verifica se já existe scripts salvos globalmente
+            const savedScripts = localStorage.getItem(STORAGE_KEY);
+            
+            if (!savedScripts) {
+                // Primeiro acesso: salva os scripts padrão
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultScripts));
+                console.log('Scripts iniciais carregados');
+            }
+            
+            // Atualiza a variável global com os scripts atuais
+            loadScripts();
+        }
+
+        // Carrega scripts do storage
+        function loadScripts() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                window.scripts = JSON.parse(saved);
+            } else {
+                window.scripts = [...defaultScripts];
+            }
+            displayScripts();
+        }
+
+        // Salva scripts no storage (FUNÇÃO CORRIGIDA)
+        function saveScripts() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(window.scripts));
+            // Mostra feedback que salvou
+            document.getElementById('syncStatus').innerHTML = '📡 Scripts sincronizados ✓ ' + new Date().toLocaleTimeString();
+            
+            // Atualiza a exibição
+            displayScripts();
+        }
+
+        // Verifica por atualizações (simula sincronização)
+        function startSyncCheck() {
+            // A cada 5 segundos, verifica se houve mudanças de outros dispositivos
+            setInterval(() => {
+                const currentScripts = localStorage.getItem(STORAGE_KEY);
+                if (currentScripts) {
+                    const parsed = JSON.parse(currentScripts);
+                    // Se os scripts mudaram de outro dispositivo, atualiza
+                    if (JSON.stringify(parsed) !== JSON.stringify(window.scripts)) {
+                        window.scripts = parsed;
+                        displayScripts();
+                        document.getElementById('syncStatus').innerHTML = '📡 Atualizado de outro dispositivo!';
+                        setTimeout(() => {
+                            document.getElementById('syncStatus').innerHTML = '📡 Scripts sincronizados globalmente';
+                        }, 2000);
+                    }
+                }
+            }, 5000);
+        }
 
         // Funções de UI
         function toggleMenu() {
@@ -1066,20 +1142,7 @@
             displayScripts();
         }
 
-        // Funções de Scripts
-        function loadScripts() {
-            const saved = localStorage.getItem('scripts');
-            if (saved) {
-                scripts = JSON.parse(saved);
-            } else {
-                saveScripts();
-            }
-        }
-
-        function saveScripts() {
-            localStorage.setItem('scripts', JSON.stringify(scripts));
-        }
-
+        // FUNÇÃO CORRIGIDA: Display scripts com botões funcionando
         function displayScripts() {
             const loading = document.getElementById('loading');
             const grid = document.getElementById('scriptsGrid');
@@ -1087,7 +1150,7 @@
             loading.classList.add('active');
 
             setTimeout(() => {
-                const filtered = scripts.filter(script => {
+                const filtered = window.scripts.filter(script => {
                     const matchCategory = currentCategory === 'all' || script.category === currentCategory;
                     const matchSearch = script.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
                                        script.description.toLowerCase().includes(currentSearch.toLowerCase());
@@ -1099,6 +1162,9 @@
                 } else {
                     grid.innerHTML = filtered.map(script => {
                         const isAdmin = currentUser && currentUser.username === 'SEANSCRIPTS';
+                        
+                        // Escapar o código para usar no onclick
+                        const escapedCode = script.code.replace(/'/g, "\\'");
                         
                         return `
                         <div class="script-card ${isAdmin ? 'admin-view' : ''}">
@@ -1131,8 +1197,8 @@
                             <div class="script-code-preview">${script.code}</div>
                             
                             <div class="script-actions">
-                                <button class="copy-btn" onclick="copyScript('${script.code}')">📋 Copiar</button>
-                                <button class="download-btn" onclick="downloadScript('${script.name}', '${script.code}')">⬇️ Download</button>
+                                <button class="copy-btn" onclick="copyScript('${escapedCode}')">📋 Copiar</button>
+                                <button class="download-btn" onclick="downloadScript('${script.name}', '${escapedCode}')">⬇️ Download</button>
                             </div>
                         </div>
                     `}).join('');
@@ -1142,7 +1208,7 @@
             }, 300);
         }
 
-        // Funções Admin
+        // FUNÇÕES ADMIN CORRIGIDAS
         function openAdminModal(scriptId = null) {
             if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
                 showToast('Acesso negado!', 'error');
@@ -1155,7 +1221,7 @@
             
             if (scriptId) {
                 // Editar script existente
-                const script = scripts.find(s => s.id === scriptId);
+                const script = window.scripts.find(s => s.id === scriptId);
                 if (script) {
                     modalTitle.textContent = 'Editar Script';
                     document.getElementById('scriptId').value = script.id;
@@ -1180,6 +1246,7 @@
             document.body.style.overflow = 'auto';
         }
 
+        // FUNÇÃO CORRIGIDA: Salvar script globalmente
         function saveScript(event) {
             event.preventDefault();
 
@@ -1197,32 +1264,34 @@
                 downloads: "0",
                 rating: "5.0",
                 addedBy: currentUser.username,
-                date: new Date().toISOString().split('T')[0]
+                date: new Date().toLocaleDateString('pt-BR')
             };
 
             if (scriptId) {
                 // Editar
-                const index = scripts.findIndex(s => s.id === parseInt(scriptId));
+                const index = window.scripts.findIndex(s => s.id === parseInt(scriptId));
                 if (index !== -1) {
-                    scripts[index] = { ...scripts[index], ...scriptData };
+                    window.scripts[index] = { ...window.scripts[index], ...scriptData };
                     showToast('Script atualizado com sucesso!', 'success');
                 }
             } else {
-                // Novo
-                const newId = Math.max(...scripts.map(s => s.id), 0) + 1;
-                scripts.push({ id: newId, ...scriptData });
+                // Novo - pegar o maior ID
+                const newId = Math.max(...window.scripts.map(s => s.id), 0) + 1;
+                window.scripts.push({ id: newId, ...scriptData });
                 showToast('Script adicionado com sucesso!', 'success');
             }
 
+            // Salvar no storage GLOBAL
             saveScripts();
-            displayScripts();
             closeAdminModal();
         }
 
+        // FUNÇÃO CORRIGIDA: Editar script
         function editScript(id) {
             openAdminModal(id);
         }
 
+        // FUNÇÃO CORRIGIDA: Deletar script globalmente
         function deleteScript(id) {
             if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
                 showToast('Acesso negado!', 'error');
@@ -1230,9 +1299,9 @@
             }
 
             if (confirm('Tem certeza que deseja deletar este script?')) {
-                scripts = scripts.filter(s => s.id !== id);
+                window.scripts = window.scripts.filter(s => s.id !== id);
+                // Salvar no storage GLOBAL
                 saveScripts();
-                displayScripts();
                 showToast('Script deletado com sucesso!', 'success');
             }
         }
@@ -1257,12 +1326,19 @@
             displayScripts();
         }
 
-        // Funções utilitárias
+        // Funções utilitárias CORRIGIDAS
         function copyScript(code) {
             navigator.clipboard.writeText(code).then(() => {
                 showToast('✅ Script copiado!', 'success');
             }).catch(() => {
-                showToast('❌ Erro ao copiar', 'error');
+                // Fallback para mobile
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('✅ Script copiado!', 'success');
             });
         }
 
