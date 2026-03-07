@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Roblox Scripts Hub - Admin SEANSCRIPTS</title>
+    <title>Roblox Scripts Hub - SEANSCRIPTS</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,6 @@
             min-height: 100vh;
         }
 
-        /* Navbar */
         .navbar {
             background: #12121a;
             padding: 12px 16px;
@@ -85,7 +84,6 @@
             background: #ff3366;
         }
 
-        /* Admin Badge */
         .admin-badge {
             background: #ff3366;
             color: #fff;
@@ -96,7 +94,6 @@
             margin-left: 8px;
         }
 
-        /* Menu Mobile */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -125,7 +122,6 @@
             cursor: pointer;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -253,21 +249,15 @@
             margin-top: 8px;
         }
 
-        .btn-danger {
-            background: #dc3545;
-        }
-
         .btn:active {
             transform: scale(0.98);
         }
 
-        /* Main Content */
         .main-content {
             margin-top: 70px;
             padding: 16px;
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 24px 16px;
@@ -287,57 +277,402 @@
             font-size: 14px;
         }
 
-        /* Search Bar */
-        .search-container {
-            margin: 20px 0;
+        /* ===== ESTILOS DOS AVISOS ===== */
+        .alerts-section {
+            margin-bottom: 24px;
         }
 
-        .search-box {
-            position: relative;
+        .alerts-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #ff3366;
         }
 
-        .search-box input {
-            width: 100%;
-            padding: 14px 16px;
-            background: #1a1a25;
-            border: 2px solid #2a2a3a;
-            border-radius: 30px;
-            color: #fff;
-            font-size: 15px;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #ff3366;
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-        }
-
-        /* Admin Panel Button */
-        .admin-panel-btn {
+        .alerts-title span {
             background: #ff3366;
             color: #fff;
-            border: none;
-            padding: 12px 20px;
+            padding: 2px 8px;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 12px;
+        }
+
+        .alerts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .alert-card {
+            background: #1a1a25;
+            border-radius: 16px;
+            padding: 16px;
+            border-left: 4px solid;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-card.info {
+            border-left-color: #00b4ff;
+        }
+
+        .alert-card.warning {
+            border-left-color: #ffaa00;
+        }
+
+        .alert-card.danger {
+            border-left-color: #ff3366;
+        }
+
+        .alert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .alert-title {
+            font-size: 16px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .alert-icon.info {
+            background: rgba(0, 180, 255, 0.2);
+            color: #00b4ff;
+        }
+
+        .alert-icon.warning {
+            background: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+        }
+
+        .alert-icon.danger {
+            background: rgba(255, 51, 102, 0.2);
+            color: #ff3366;
+        }
+
+        .alert-time {
+            background: #252535;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .alert-message {
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 8px 0;
+        }
+
+        .alert-expires {
+            font-size: 11px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .admin-controls-alert {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .admin-btn-alert {
+            background: #252535;
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .admin-btn-alert.edit {
+            background: #007bff;
+        }
+
+        .admin-btn-alert.delete {
+            background: #dc3545;
+        }
+
+        .timer-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff3366, #ff6b6b);
+            transition: width 1s linear;
+            border-radius: 0 0 0 16px;
+        }
+        /* ===== FIM DOS ESTILOS DE AVISOS ===== */
+
+        /* ===== ESTILOS DA TABELA SOCIAL ===== */
+        .social-container {
+            background: #1a1a25;
+            border-radius: 24px;
+            padding: 30px 20px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid #2f2f40;
+            display: none;
+        }
+
+        .social-container.active {
+            display: block;
+        }
+
+        .social-title {
+            font-size: 24px;
+            color: #ff3366;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .social-card {
+            background: #12121a;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #2f2f40;
+            transition: 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .social-card:hover {
+            transform: translateY(-3px);
+            border-color: #ff3366;
+            box-shadow: 0 5px 20px rgba(255, 51, 102, 0.2);
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .social-icon.discord {
+            background: #5865F2;
+        }
+
+        .social-icon.youtube {
+            background: #FF0000;
+        }
+
+        .social-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .social-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .social-link {
+            font-size: 12px;
+            color: #888;
+            word-break: break-all;
+        }
+
+        .social-arrow {
+            font-size: 20px;
+            color: #ff3366;
+        }
+        /* ===== FIM ESTILOS SOCIAL ===== */
+
+        .cloud-status {
+            font-size: 12px;
+            color: #00ff88;
+            text-align: center;
             margin: 10px 0;
-            width: 100%;
+            padding: 8px;
+            background: #1a1a25;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
 
-        /* Categories */
+        .admin-panel-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .admin-panel-btn {
+            flex: 1;
+            min-width: 100px;
+            background: #ff3366;
+            color: #fff;
+            border: none;
+            padding: 14px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: 0.3s;
+            box-shadow: 0 2px 8px rgba(255, 51, 102, 0.3);
+        }
+
+        .admin-panel-btn.blue {
+            background: #007bff;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .admin-panel-btn.green {
+            background: #28a745;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+        }
+
+        .admin-panel-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .admin-panel-btn:active {
+            transform: translateY(0);
+        }
+
+        .search-container {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            background: #1a1a25;
+            border: 2px solid #2f2f40;
+            border-radius: 40px;
+            color: #fff;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #ff3366;
+            background: #20202e;
+            box-shadow: 0 4px 20px rgba(255, 51, 102, 0.2);
+        }
+
+        .search-box input::placeholder {
+            color: #666;
+            font-weight: 400;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #ff3366;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .search-clear:hover {
+            background: #2f2f40;
+            color: #fff;
+        }
+
+        .search-box input:not(:placeholder-shown) + .search-icon + .search-clear {
+            display: flex;
+        }
+
+        .search-stats {
+            text-align: right;
+            margin-top: 6px;
+            font-size: 12px;
+            color: #888;
+            padding-right: 10px;
+        }
+
         .categories {
             display: flex;
             gap: 8px;
@@ -370,7 +705,6 @@
             color: #fff;
         }
 
-        /* Scripts Grid */
         .scripts-grid {
             display: flex;
             flex-direction: column;
@@ -421,10 +755,6 @@
             background: #dc3545;
         }
 
-        .admin-btn:hover {
-            transform: scale(1.1);
-        }
-
         .script-header {
             display: flex;
             align-items: center;
@@ -451,9 +781,6 @@
         .script-info h3 {
             font-size: 16px;
             margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .script-category {
@@ -519,11 +846,6 @@
             color: #fff;
         }
 
-        .copy-btn:active, .download-btn:active {
-            transform: scale(0.96);
-        }
-
-        /* Loading */
         .loading {
             display: none;
             text-align: center;
@@ -548,7 +870,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -578,11 +899,6 @@
             border-left-color: #00ff88;
         }
 
-        .toast.error {
-            border-left-color: #ff3366;
-        }
-
-        /* No Results */
         .no-results {
             text-align: center;
             padding: 40px 20px;
@@ -590,7 +906,6 @@
             font-size: 15px;
         }
 
-        /* User Info */
         .user-info {
             display: none;
             align-items: center;
@@ -622,16 +937,6 @@
             cursor: pointer;
         }
 
-        footer {
-            text-align: center;
-            padding: 24px 16px;
-            color: #666;
-            font-size: 13px;
-            border-top: 1px solid #1a1a25;
-            margin-top: 20px;
-        }
-
-        /* Status Badge */
         .status-badge {
             font-size: 10px;
             padding: 2px 6px;
@@ -641,15 +946,13 @@
             margin-left: 8px;
         }
 
-        /* Sincronização */
-        .sync-status {
-            font-size: 12px;
-            color: #888;
+        footer {
             text-align: center;
-            margin: 10px 0;
-            padding: 8px;
-            background: #1a1a25;
-            border-radius: 20px;
+            padding: 24px 16px;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #1a1a25;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -662,8 +965,8 @@
         </div>
         
         <div class="nav-links" id="navLinks">
-            <a class="active" onclick="changePage('home')">Início</a>
-            <a onclick="changePage('scripts')">Scripts</a>
+            <a class="active" onclick="showHome()">Início</a>
+            <a onclick="showSocial()">Social</a>
             <a onclick="openModal()">Entrar</a>
         </div>
 
@@ -679,8 +982,8 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a onclick="changePage('home'); toggleMenu()">Início</a>
-        <a onclick="changePage('scripts'); toggleMenu()">Scripts</a>
+        <a onclick="showHome(); toggleMenu()">Início</a>
+        <a onclick="showSocial(); toggleMenu()">Social</a>
         <a onclick="openModal(); toggleMenu()">Entrar</a>
     </div>
 
@@ -699,7 +1002,6 @@
                 <button class="tab-btn" onclick="switchTab('register')">Cadastrar</button>
             </div>
 
-            <!-- Login Form -->
             <div class="tab-pane active" id="loginTab">
                 <form onsubmit="handleLogin(event)">
                     <div class="form-group">
@@ -712,7 +1014,6 @@
                 </form>
             </div>
 
-            <!-- Register Form -->
             <div class="tab-pane" id="registerTab">
                 <form onsubmit="handleRegister(event)">
                     <div class="form-group">
@@ -733,7 +1034,7 @@
         </div>
     </div>
 
-    <!-- Modal de Admin para Adicionar/Editar Scripts -->
+    <!-- Modal de Admin para Scripts -->
     <div class="modal" id="adminScriptModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeAdminModal()">&times;</span>
@@ -781,36 +1082,122 @@
         </div>
     </div>
 
+    <!-- Modal de Admin para Avisos -->
+    <div class="modal" id="adminAlertModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAlertModal()">&times;</span>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 40px; color: #ff3366;">⚠️</div>
+                <h3 style="color: #fff;" id="alertModalTitle">Gerenciar Aviso</h3>
+            </div>
+
+            <form onsubmit="saveAlert(event)" id="alertForm">
+                <input type="hidden" id="alertId" value="">
+                
+                <div class="form-group">
+                    <label>Título do Aviso</label>
+                    <input type="text" id="alertTitle" placeholder="Ex: Manutenção Programada" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select id="alertType" required>
+                        <option value="info">ℹ️ Informativo</option>
+                        <option value="warning">⚠️ Aviso</option>
+                        <option value="danger">🚨 Urgente</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Mensagem</label>
+                    <textarea id="alertMessage" placeholder="Descreva o aviso..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Duração (em horas)</label>
+                    <input type="number" id="alertDuration" min="1" max="720" value="24" required>
+                </div>
+
+                <button type="submit" class="btn">Salvar Aviso</button>
+                <button type="button" class="btn btn-secondary" onclick="closeAlertModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <div class="main-content" id="mainContent">
+    <div class="main-content">
         <!-- Hero Section -->
-        <div class="hero">
+        <div class="hero" id="heroSection">
             <h2>🔥 Scripts de EXPLOIT Roblox</h2>
             <p>Os melhores scripts atualizados diariamente</p>
         </div>
 
-        <!-- Status de Sincronização -->
-        <div class="sync-status" id="syncStatus">
-            📡 Scripts sincronizados globalmente
+        <!-- Status da Nuvem -->
+        <div class="cloud-status" id="cloudStatus">
+            <span>☁️</span> Conectando à nuvem...
         </div>
 
-        <!-- Admin Panel Button (só aparece para SEANSCRIPTS) -->
-        <div id="adminPanelBtn" style="display: none;">
-            <button class="admin-panel-btn" onclick="openAdminModal()">
-                <span>➕</span> Adicionar Novo Script
-            </button>
+        <!-- Área de Avisos -->
+        <div class="alerts-section" id="alertsSection">
+            <div class="alerts-title">
+                <span>📢</span> AVISOS IMPORTANTES
+                <span id="alertCount">0</span>
+            </div>
+            <div class="alerts-container" id="alertsContainer"></div>
         </div>
 
-        <!-- Search Bar -->
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Pesquisar scripts..." onkeyup="filterScripts()">
-                <span class="search-icon">🔍</span>
+        <!-- Social Container -->
+        <div class="social-container" id="socialContainer">
+            <div class="social-title">🌐 MINHAS REDES SOCIAIS</div>
+            <div class="social-grid">
+                <a href="https://discord.gg/XRfu4wM7Kx" target="_blank" class="social-card">
+                    <div class="social-icon discord">💬</div>
+                    <div class="social-info">
+                        <div class="social-name">Discord</div>
+                        <div class="social-link">discord.gg/XRfu4wM7Kx</div>
+                    </div>
+                    <div class="social-arrow">→</div>
+                </a>
+                
+                <a href="https://youtube.com/@vortex1-ae?si=0hcusm6WERHhXZrV" target="_blank" class="social-card">
+                    <div class="social-icon youtube">▶️</div>
+                    <div class="social-info">
+                        <div class="social-name">YouTube</div>
+                        <div class="social-link">@vortex1-ae</div>
+                    </div>
+                    <div class="social-arrow">→</div>
+                </a>
             </div>
         </div>
 
+        <!-- Admin Panel -->
+        <div id="adminPanel" style="display: none;">
+            <div class="admin-panel-buttons">
+                <button class="admin-panel-btn" onclick="openAdminModal()">
+                    <span>📝</span> Scripts
+                </button>
+                <button class="admin-panel-btn blue" onclick="openAlertModal()">
+                    <span>⚠️</span> Avisos
+                </button>
+                <button class="admin-panel-btn green" onclick="showToast('🚀 Função em desenvolvimento!', 'success')">
+                    <span>📊</span> Estatísticas
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container" id="searchSection">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Pesquisar scripts por nome, categoria ou descrição..." onkeyup="filterScripts()">
+                <button class="search-clear" onclick="clearSearch()" id="clearSearchBtn">✕</button>
+            </div>
+            <div class="search-stats" id="searchStats">0 resultados</div>
+        </div>
+
         <!-- Categories -->
-        <div class="categories" id="categories">
+        <div class="categories" id="categoriesSection">
             <button class="category-btn active" onclick="filterCategory('all')">Todos</button>
             <button class="category-btn" onclick="filterCategory('farming')">Farming</button>
             <button class="category-btn" onclick="filterCategory('pvp')">PvP</button>
@@ -824,7 +1211,7 @@
         <!-- Loading -->
         <div class="loading" id="loading">
             <div class="loading-spinner"></div>
-            <p>Carregando scripts...</p>
+            <p>Carregando scripts da nuvem...</p>
         </div>
 
         <!-- Scripts Grid -->
@@ -835,190 +1222,552 @@
     <div class="toast" id="toast"></div>
 
     <footer>
-        <p>© 2024 Roblox Scripts Hub - Sistema Global de Scripts</p>
+        <p>© 2024 Roblox Scripts Hub - Scripts na Nuvem</p>
     </footer>
 
     <script>
-        // CHAVE ÚNICA PARA ARMAZENAMENTO GLOBAL
-        const STORAGE_KEY = 'GLOBAL_ROBLOX_SCRIPTS_SEAN';
+        // 🔑 SUAS CHAVES DO JSONBIN.IO
+        const BIN_ID = '69ab66bb43b1c97be9bba79d';
+        const API_KEY = '$2a$10$EdnUKkWf17RFJ5xS5cXU5O1W86cQEQqEkhHD4pq/oEiXWFKfRBnpW';
         
-        // Scripts iniciais (só usa se não existir nada no storage)
-        const defaultScripts = [
-            {
-                id: 1,
-                name: "Auto Farm Pet Sim",
-                category: "farming",
-                description: "Farm automática para Pet Simulator - Coleta moedas e diamantes automaticamente",
-                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/abc123"))()',
-                downloads: "15.2k",
-                rating: "4.8",
-                addedBy: "SEANSCRIPTS",
-                date: "2024-01-15"
-            },
-            {
-                id: 2,
-                name: "Aimbot Arsenal",
-                category: "aimbot",
-                description: "Aimbot perfeito para Arsenal com detecção automática",
-                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/def456"))()',
-                downloads: "8.9k",
-                rating: "4.5",
-                addedBy: "SEANSCRIPTS",
-                date: "2024-01-20"
-            },
-            {
-                id: 3,
-                name: "ESP Player",
-                category: "esp",
-                description: "Veja jogadores através das paredes com ESP avançado",
-                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/ghi789"))()',
-                downloads: "6.7k",
-                rating: "4.6",
-                addedBy: "admin",
-                date: "2024-02-01"
-            },
-            {
-                id: 4,
-                name: "Fly Ultimate",
-                category: "fly",
-                description: "Voe em qualquer jogo com controles personalizáveis",
-                code: 'loadstring(game:HttpGet("https://pastebin.com/raw/jkl012"))()',
-                downloads: "21.4k",
-                rating: "4.9",
-                addedBy: "SEANSCRIPTS",
-                date: "2024-02-10"
-            }
-        ];
+        const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+        
+        // Dados padrão
+        const defaultData = {
+            scripts: [
+                {
+                    id: 1,
+                    name: "Auto Farm Pet Sim",
+                    category: "farming",
+                    description: "Farm automática para Pet Simulator - Coleta moedas e diamantes automaticamente",
+                    code: 'loadstring(game:HttpGet("https://pastebin.com/raw/abc123"))()',
+                    downloads: "15.2k",
+                    rating: "4.8",
+                    addedBy: "SEANSCRIPTS",
+                    date: "2024-01-15"
+                },
+                {
+                    id: 2,
+                    name: "Aimbot Arsenal",
+                    category: "aimbot",
+                    description: "Aimbot perfeito para Arsenal com detecção automática",
+                    code: 'loadstring(game:HttpGet("https://pastebin.com/raw/def456"))()',
+                    downloads: "8.9k",
+                    rating: "4.5",
+                    addedBy: "SEANSCRIPTS",
+                    date: "2024-01-20"
+                },
+                {
+                    id: 3,
+                    name: "Fly Ultimate",
+                    category: "fly",
+                    description: "Voe em qualquer jogo com controles personalizáveis",
+                    code: 'loadstring(game:HttpGet("https://pastebin.com/raw/jkl012"))()',
+                    downloads: "21.4k",
+                    rating: "4.9",
+                    addedBy: "SEANSCRIPTS",
+                    date: "2024-02-10"
+                }
+            ],
+            alerts: []
+        };
 
         // Variáveis globais
         let currentUser = null;
         let currentCategory = 'all';
         let currentSearch = '';
+        let siteData = { scripts: [], alerts: [] };
 
-        // Inicialização
+        // Inicialização - CARREGA TUDO NA HORA
         document.addEventListener('DOMContentLoaded', function() {
-            initializeScripts();
             checkSavedUser();
-            startSyncCheck();
+            loadFromCloud();
+            startAlertTimer();
+            showHome(); // Mostra home por padrão
         });
 
-        // FUNÇÃO CORRIGIDA: Inicializa scripts apenas uma vez globalmente
-        function initializeScripts() {
-            // Verifica se já existe scripts salvos globalmente
-            const savedScripts = localStorage.getItem(STORAGE_KEY);
+        // ===== FUNÇÕES DA NUVEM =====
+        async function loadFromCloud() {
+            const cloudStatus = document.getElementById('cloudStatus');
+            const loading = document.getElementById('loading');
             
-            if (!savedScripts) {
-                // Primeiro acesso: salva os scripts padrão
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultScripts));
-                console.log('Scripts iniciais carregados');
-            }
+            loading.classList.add('active');
+            cloudStatus.innerHTML = '<span>☁️</span> Sincronizando...';
             
-            // Atualiza a variável global com os scripts atuais
-            loadScripts();
-        }
-
-        // Carrega scripts do storage
-        function loadScripts() {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                window.scripts = JSON.parse(saved);
-            } else {
-                window.scripts = [...defaultScripts];
-            }
-            displayScripts();
-        }
-
-        // Salva scripts no storage (FUNÇÃO CORRIGIDA)
-        function saveScripts() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(window.scripts));
-            // Mostra feedback que salvou
-            document.getElementById('syncStatus').innerHTML = '📡 Scripts sincronizados ✓ ' + new Date().toLocaleTimeString();
-            
-            // Atualiza a exibição
-            displayScripts();
-        }
-
-        // Verifica por atualizações (simula sincronização)
-        function startSyncCheck() {
-            // A cada 5 segundos, verifica se houve mudanças de outros dispositivos
-            setInterval(() => {
-                const currentScripts = localStorage.getItem(STORAGE_KEY);
-                if (currentScripts) {
-                    const parsed = JSON.parse(currentScripts);
-                    // Se os scripts mudaram de outro dispositivo, atualiza
-                    if (JSON.stringify(parsed) !== JSON.stringify(window.scripts)) {
-                        window.scripts = parsed;
-                        displayScripts();
-                        document.getElementById('syncStatus').innerHTML = '📡 Atualizado de outro dispositivo!';
-                        setTimeout(() => {
-                            document.getElementById('syncStatus').innerHTML = '📡 Scripts sincronizados globalmente';
-                        }, 2000);
-                    }
+            try {
+                const response = await fetch(API_URL, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    siteData = data.record;
+                    cloudStatus.innerHTML = '<span>☁️</span> Conectado à nuvem ✓';
+                } else {
+                    siteData = JSON.parse(JSON.stringify(defaultData));
+                    cloudStatus.innerHTML = '<span>⚠️</span> Usando dados locais';
                 }
-            }, 5000);
+            } catch (error) {
+                siteData = JSON.parse(JSON.stringify(defaultData));
+                cloudStatus.innerHTML = '<span>⚠️</span> Modo offline';
+            }
+            
+            loading.classList.remove('active');
+            displayAlerts();
+            displayScripts(); // MOSTRA OS SCRIPTS IMEDIATAMENTE
         }
 
-        // Funções de UI
+        async function saveToCloud() {
+            document.getElementById('cloudStatus').innerHTML = '<span>☁️</span> Salvando...';
+            
+            try {
+                await fetch(API_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': API_KEY
+                    },
+                    body: JSON.stringify(siteData)
+                });
+                document.getElementById('cloudStatus').innerHTML = '<span>☁️</span> Salvo na nuvem ✓';
+            } catch (error) {
+                document.getElementById('cloudStatus').innerHTML = '<span>⚠️</span> Erro ao salvar';
+            }
+        }
+
+        // ===== FUNÇÕES DE NAVEGAÇÃO =====
+        function showHome() {
+            // Atualizar classes active
+            document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.textContent === 'Início') link.classList.add('active');
+            });
+            
+            // Mostrar elementos da home
+            document.getElementById('heroSection').style.display = 'block';
+            document.getElementById('alertsSection').style.display = 'block';
+            document.getElementById('socialContainer').classList.remove('active');
+            document.getElementById('searchSection').style.display = 'block';
+            document.getElementById('categoriesSection').style.display = 'flex';
+            document.getElementById('scriptsGrid').style.display = 'flex';
+        }
+
+        function showSocial() {
+            // Atualizar classes active
+            document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.textContent === 'Social') link.classList.add('active');
+            });
+            
+            // Mostrar elementos sociais
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('alertsSection').style.display = 'none';
+            document.getElementById('socialContainer').classList.add('active');
+            document.getElementById('searchSection').style.display = 'none';
+            document.getElementById('categoriesSection').style.display = 'none';
+            document.getElementById('scriptsGrid').style.display = 'none';
+        }
+
+        // ===== FUNÇÕES PARA AVISOS =====
+        function displayAlerts() {
+            const container = document.getElementById('alertsContainer');
+            const now = Date.now();
+            
+            const activeAlerts = siteData.alerts.filter(alert => alert.expires > now);
+            
+            document.getElementById('alertCount').textContent = activeAlerts.length;
+            
+            if (activeAlerts.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 20px; background: #1a1a25; border-radius: 16px; color: #666;">Nenhum aviso no momento</div>';
+                return;
+            }
+            
+            container.innerHTML = activeAlerts.map(alert => {
+                const timeLeft = Math.ceil((alert.expires - now) / (1000 * 60 * 60));
+                const width = ((alert.expires - now) / (alert.duration * 60 * 60 * 1000)) * 100;
+                
+                return `
+                <div class="alert-card ${alert.type}" id="alert-${alert.id}">
+                    ${currentUser && currentUser.username === 'SEANSCRIPTS' ? `
+                        <div class="admin-controls-alert">
+                            <button class="admin-btn-alert edit" onclick="editAlert('${alert.id}')">✏️</button>
+                            <button class="admin-btn-alert delete" onclick="deleteAlert('${alert.id}')">🗑️</button>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="alert-header">
+                        <div class="alert-title">
+                            <span class="alert-icon ${alert.type}">
+                                ${alert.type === 'info' ? 'ℹ️' : alert.type === 'warning' ? '⚠️' : '🚨'}
+                            </span>
+                            ${alert.title}
+                        </div>
+                        <span class="alert-time">⏰ ${timeLeft}h</span>
+                    </div>
+                    
+                    <div class="alert-message">${alert.message}</div>
+                    
+                    <div class="alert-expires">
+                        <span>⏳ Expira: ${new Date(alert.expires).toLocaleString()}</span>
+                    </div>
+                    
+                    <div class="timer-bar" style="width: ${width}%"></div>
+                </div>
+            `}).join('');
+        }
+
+        function startAlertTimer() {
+            setInterval(() => {
+                displayAlerts();
+            }, 60000);
+        }
+
+        // ===== FUNÇÕES ADMIN PARA AVISOS =====
+        function openAlertModal(alertId = null) {
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            const modal = document.getElementById('adminAlertModal');
+            const form = document.getElementById('alertForm');
+            
+            if (alertId) {
+                const alert = siteData.alerts.find(a => a.id === alertId);
+                if (alert) {
+                    document.getElementById('alertModalTitle').textContent = 'Editar Aviso';
+                    document.getElementById('alertId').value = alert.id;
+                    document.getElementById('alertTitle').value = alert.title;
+                    document.getElementById('alertType').value = alert.type;
+                    document.getElementById('alertMessage').value = alert.message;
+                    document.getElementById('alertDuration').value = alert.duration;
+                }
+            } else {
+                document.getElementById('alertModalTitle').textContent = 'Novo Aviso';
+                form.reset();
+                document.getElementById('alertId').value = '';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeAlertModal() {
+            document.getElementById('adminAlertModal').classList.remove('active');
+        }
+
+        async function saveAlert(event) {
+            event.preventDefault();
+
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            const alertId = document.getElementById('alertId').value;
+            const duration = parseInt(document.getElementById('alertDuration').value) * 60 * 60 * 1000;
+            
+            const alertData = {
+                title: document.getElementById('alertTitle').value,
+                type: document.getElementById('alertType').value,
+                message: document.getElementById('alertMessage').value,
+                duration: parseInt(document.getElementById('alertDuration').value),
+                expires: Date.now() + duration
+            };
+
+            if (alertId) {
+                const index = siteData.alerts.findIndex(a => a.id === alertId);
+                if (index !== -1) {
+                    siteData.alerts[index] = { ...siteData.alerts[index], ...alertData };
+                    showToast('Aviso atualizado!', 'success');
+                }
+            } else {
+                const newId = 'alert_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                siteData.alerts.push({ id: newId, ...alertData });
+                showToast('Aviso criado!', 'success');
+            }
+
+            await saveToCloud();
+            displayAlerts();
+            closeAlertModal();
+        }
+
+        function editAlert(id) {
+            openAlertModal(id);
+        }
+
+        async function deleteAlert(id) {
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            if (confirm('Deletar este aviso?')) {
+                siteData.alerts = siteData.alerts.filter(a => a.id !== id);
+                await saveToCloud();
+                displayAlerts();
+                showToast('Aviso deletado!', 'success');
+            }
+        }
+
+        // ===== FUNÇÕES DE SCRIPTS =====
+        function displayScripts() {
+            const grid = document.getElementById('scriptsGrid');
+
+            const filtered = siteData.scripts.filter(script => {
+                const matchCategory = currentCategory === 'all' || script.category === currentCategory;
+                const matchSearch = script.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                                   script.description.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchCategory && matchSearch;
+            });
+
+            document.getElementById('searchStats').textContent = filtered.length + ' resultados';
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="no-results">Nenhum script encontrado 😕</div>';
+            } else {
+                grid.innerHTML = filtered.map(script => {
+                    const isAdmin = currentUser && currentUser.username === 'SEANSCRIPTS';
+                    
+                    return `
+                    <div class="script-card ${isAdmin ? 'admin-view' : ''}">
+                        ${isAdmin ? `
+                            <div class="admin-controls">
+                                <button class="admin-btn edit" onclick="editScript(${script.id})">✏️</button>
+                                <button class="admin-btn delete" onclick="deleteScript(${script.id})">🗑️</button>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="script-header">
+                            <div class="script-icon">${script.name.charAt(0)}</div>
+                            <div class="script-info">
+                                <h3>
+                                    ${script.name}
+                                    ${script.addedBy === 'SEANSCRIPTS' ? '<span class="status-badge">Oficial</span>' : ''}
+                                </h3>
+                                <span class="script-category">#${script.category}</span>
+                            </div>
+                        </div>
+                        
+                        <p class="script-description">${script.description}</p>
+                        
+                        <div class="script-stats">
+                            <span>⬇️ ${script.downloads}</span>
+                            <span>⭐ ${script.rating}</span>
+                            <span>📅 ${script.date || '2024'}</span>
+                        </div>
+                        
+                        <div class="script-code-preview">${script.code}</div>
+                        
+                        <div class="script-actions">
+                            <button class="copy-btn" onclick='copyScript(${JSON.stringify(script.code)})'>📋 Copiar</button>
+                            <button class="download-btn" onclick='downloadScript("${script.name}", ${JSON.stringify(script.code)})'>⬇️ Download</button>
+                        </div>
+                    </div>
+                `}).join('');
+            }
+        }
+
+        function copyScript(code) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(() => {
+                    showToast('✅ Script copiado!', 'success');
+                }).catch(() => fallbackCopy(code));
+            } else {
+                fallbackCopy(code);
+            }
+        }
+
+        function fallbackCopy(code) {
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast('✅ Script copiado!', 'success');
+            } catch (err) {
+                showToast('❌ Erro ao copiar', 'error');
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        function downloadScript(name, code) {
+            try {
+                const fileName = name.replace(/[^a-zA-Z0-9]/g, '_') + '.lua';
+                const blob = new Blob([code], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                }, 100);
+                
+                showToast('⬇️ Download iniciado!', 'success');
+            } catch (error) {
+                showToast('❌ Erro ao baixar', 'error');
+            }
+        }
+
+        // ADMIN SCRIPTS
+        function openAdminModal(scriptId = null) {
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            const modal = document.getElementById('adminScriptModal');
+            
+            if (scriptId) {
+                const script = siteData.scripts.find(s => s.id === scriptId);
+                if (script) {
+                    document.getElementById('modalTitle').textContent = 'Editar Script';
+                    document.getElementById('scriptId').value = script.id;
+                    document.getElementById('scriptName').value = script.name;
+                    document.getElementById('scriptCategory').value = script.category;
+                    document.getElementById('scriptDescription').value = script.description;
+                    document.getElementById('scriptCode').value = script.code;
+                }
+            } else {
+                document.getElementById('modalTitle').textContent = 'Adicionar Novo Script';
+                document.getElementById('scriptForm').reset();
+                document.getElementById('scriptId').value = '';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminScriptModal').classList.remove('active');
+        }
+
+        async function saveScript(event) {
+            event.preventDefault();
+
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            const scriptId = document.getElementById('scriptId').value;
+            const scriptData = {
+                name: document.getElementById('scriptName').value,
+                category: document.getElementById('scriptCategory').value,
+                description: document.getElementById('scriptDescription').value,
+                code: document.getElementById('scriptCode').value,
+                downloads: "0",
+                rating: "5.0",
+                addedBy: currentUser.username,
+                date: new Date().toLocaleDateString('pt-BR')
+            };
+
+            if (scriptId) {
+                const index = siteData.scripts.findIndex(s => s.id === parseInt(scriptId));
+                if (index !== -1) {
+                    siteData.scripts[index] = { ...siteData.scripts[index], ...scriptData };
+                    showToast('Script atualizado!', 'success');
+                }
+            } else {
+                const newId = Math.max(...siteData.scripts.map(s => s.id), 0) + 1;
+                siteData.scripts.push({ id: newId, ...scriptData });
+                showToast('Script adicionado!', 'success');
+            }
+
+            await saveToCloud();
+            displayScripts();
+            closeAdminModal();
+        }
+
+        function editScript(id) {
+            openAdminModal(id);
+        }
+
+        async function deleteScript(id) {
+            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
+                showToast('Acesso negado!', 'error');
+                return;
+            }
+
+            if (confirm('Deletar este script?')) {
+                siteData.scripts = siteData.scripts.filter(s => s.id !== id);
+                await saveToCloud();
+                displayScripts();
+                showToast('Script deletado!', 'success');
+            }
+        }
+
+        // FILTROS
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === category || 
+                    (category === 'all' && btn.textContent === 'Todos')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            displayScripts();
+        }
+
+        function filterScripts() {
+            currentSearch = document.getElementById('searchInput').value;
+            displayScripts();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            currentSearch = '';
+            displayScripts();
+        }
+
+        // FUNÇÕES DE UI
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
         }
 
-        function changePage(page) {
-            // Implementar mudança de página se necessário
-            console.log('Mudando para página:', page);
-        }
-
-        // Funções do Modal de Auth
+        // MODAL
         function openModal() {
             document.getElementById('authModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             document.getElementById('authModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
         }
 
         function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-
-            document.querySelectorAll('.tab-pane').forEach(pane => {
-                pane.classList.remove('active');
-            });
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
             document.getElementById(tab + 'Tab').classList.add('active');
         }
 
-        // Funções de Autenticação
+        // AUTENTICAÇÃO
         function handleLogin(event) {
             event.preventDefault();
             
             const username = document.getElementById('loginUsername').value;
             const password = document.getElementById('loginPassword').value;
 
-            if (!username || !password) {
-                showToast('Preencha todos os campos!', 'error');
-                return;
-            }
-
-            // Login especial para SEANSCRIPTS
             if (username === 'SEANSCRIPTS' && password === '02/10/2011') {
-                const adminUser = {
-                    username: 'SEANSCRIPTS',
-                    isAdmin: true,
-                    avatar: 'S'
-                };
+                const adminUser = { username: 'SEANSCRIPTS', isAdmin: true, avatar: 'S' };
                 currentUser = adminUser;
                 localStorage.setItem('currentUser', JSON.stringify(adminUser));
                 updateUIForUser(adminUser);
-                showToast('✅ Bem-vindo ADMIN SEANSCRIPTS!', 'success');
+                showToast('✅ Bem-vindo ADMIN!', 'success');
                 closeModal();
                 return;
             }
 
-            // Login normal
             const users = JSON.parse(localStorage.getItem('users') || '[]');
             const user = users.find(u => u.username === username && u.password === password);
 
@@ -1026,7 +1775,7 @@
                 currentUser = user;
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 updateUIForUser(user);
-                showToast('Login realizado com sucesso!', 'success');
+                showToast('Login realizado!', 'success');
                 closeModal();
             } else {
                 showToast('Usuário ou senha inválidos!', 'error');
@@ -1051,16 +1800,6 @@
                 return;
             }
 
-            if (username.length < 3) {
-                showToast('Usuário deve ter pelo menos 3 caracteres!', 'error');
-                return;
-            }
-
-            if (password.length < 4) {
-                showToast('Senha deve ter pelo menos 4 caracteres!', 'error');
-                return;
-            }
-
             const users = JSON.parse(localStorage.getItem('users') || '[]');
             
             if (users.some(u => u.username === username)) {
@@ -1079,7 +1818,7 @@
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
 
-            showToast('Conta criada com sucesso! Faça login.', 'success');
+            showToast('Conta criada! Faça login.', 'success');
             switchTab('login');
             document.getElementById('loginUsername').value = username;
         }
@@ -1104,7 +1843,7 @@
             const userInfo = document.getElementById('userInfo');
             const mobileMenu = document.getElementById('mobileMenu');
             const adminBadge = document.getElementById('adminBadge');
-            const adminPanelBtn = document.getElementById('adminPanelBtn');
+            const adminPanel = document.getElementById('adminPanel');
 
             if (user) {
                 navLinks.style.display = 'none';
@@ -1112,247 +1851,33 @@
                 document.getElementById('userAvatar').textContent = user.avatar || user.username.charAt(0).toUpperCase();
                 document.getElementById('userName').textContent = user.username;
                 
-                // Mostrar badge de admin para SEANSCRIPTS
                 if (user.username === 'SEANSCRIPTS') {
                     adminBadge.style.display = 'inline';
-                    adminPanelBtn.style.display = 'block';
+                    adminPanel.style.display = 'block';
                 } else {
                     adminBadge.style.display = 'none';
-                    adminPanelBtn.style.display = 'none';
+                    adminPanel.style.display = 'none';
                 }
                 
                 mobileMenu.innerHTML = `
-                    <a onclick="changePage('home'); toggleMenu()">Início</a>
-                    <a onclick="changePage('scripts'); toggleMenu()">Scripts</a>
-                    ${user.username === 'SEANSCRIPTS' ? '<a onclick="openAdminModal(); toggleMenu()">➕ Admin</a>' : ''}
+                    <a onclick="showHome(); toggleMenu()">Início</a>
+                    <a onclick="showSocial(); toggleMenu()">Social</a>
+                    ${user.username === 'SEANSCRIPTS' ? '<a onclick="openAdminModal(); toggleMenu()">📝 Scripts</a>' : ''}
+                    ${user.username === 'SEANSCRIPTS' ? '<a onclick="openAlertModal(); toggleMenu()">⚠️ Avisos</a>' : ''}
+                    ${user.username === 'SEANSCRIPTS' ? '<a onclick="showToast(\'🚀 Em breve!\', \'success\'); toggleMenu()">📊 Stats</a>' : ''}
                     <a onclick="logout(); toggleMenu()">Sair</a>
                 `;
             } else {
                 navLinks.style.display = 'flex';
                 userInfo.classList.remove('active');
-                adminPanelBtn.style.display = 'none';
+                adminPanel.style.display = 'none';
                 
                 mobileMenu.innerHTML = `
-                    <a onclick="changePage('home'); toggleMenu()">Início</a>
-                    <a onclick="changePage('scripts'); toggleMenu()">Scripts</a>
+                    <a onclick="showHome(); toggleMenu()">Início</a>
+                    <a onclick="showSocial(); toggleMenu()">Social</a>
                     <a onclick="openModal(); toggleMenu()">Entrar</a>
                 `;
             }
-            
-            displayScripts();
-        }
-
-        // FUNÇÃO CORRIGIDA: Display scripts com botões funcionando
-        function displayScripts() {
-            const loading = document.getElementById('loading');
-            const grid = document.getElementById('scriptsGrid');
-
-            loading.classList.add('active');
-
-            setTimeout(() => {
-                const filtered = window.scripts.filter(script => {
-                    const matchCategory = currentCategory === 'all' || script.category === currentCategory;
-                    const matchSearch = script.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
-                                       script.description.toLowerCase().includes(currentSearch.toLowerCase());
-                    return matchCategory && matchSearch;
-                });
-
-                if (filtered.length === 0) {
-                    grid.innerHTML = '<div class="no-results">Nenhum script encontrado 😕</div>';
-                } else {
-                    grid.innerHTML = filtered.map(script => {
-                        const isAdmin = currentUser && currentUser.username === 'SEANSCRIPTS';
-                        
-                        // Escapar o código para usar no onclick
-                        const escapedCode = script.code.replace(/'/g, "\\'");
-                        
-                        return `
-                        <div class="script-card ${isAdmin ? 'admin-view' : ''}">
-                            ${isAdmin ? `
-                                <div class="admin-controls">
-                                    <button class="admin-btn edit" onclick="editScript(${script.id})" title="Editar">✏️</button>
-                                    <button class="admin-btn delete" onclick="deleteScript(${script.id})" title="Deletar">🗑️</button>
-                                </div>
-                            ` : ''}
-                            
-                            <div class="script-header">
-                                <div class="script-icon">${script.name.charAt(0)}</div>
-                                <div class="script-info">
-                                    <h3>
-                                        ${script.name}
-                                        ${script.addedBy === 'SEANSCRIPTS' ? '<span class="status-badge">Oficial</span>' : ''}
-                                    </h3>
-                                    <span class="script-category">#${script.category}</span>
-                                </div>
-                            </div>
-                            
-                            <p class="script-description">${script.description}</p>
-                            
-                            <div class="script-stats">
-                                <span>⬇️ ${script.downloads}</span>
-                                <span>⭐ ${script.rating}</span>
-                                <span>📅 ${script.date || '2024'}</span>
-                            </div>
-                            
-                            <div class="script-code-preview">${script.code}</div>
-                            
-                            <div class="script-actions">
-                                <button class="copy-btn" onclick="copyScript('${escapedCode}')">📋 Copiar</button>
-                                <button class="download-btn" onclick="downloadScript('${script.name}', '${escapedCode}')">⬇️ Download</button>
-                            </div>
-                        </div>
-                    `}).join('');
-                }
-
-                loading.classList.remove('active');
-            }, 300);
-        }
-
-        // FUNÇÕES ADMIN CORRIGIDAS
-        function openAdminModal(scriptId = null) {
-            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
-                showToast('Acesso negado!', 'error');
-                return;
-            }
-
-            const modal = document.getElementById('adminScriptModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const form = document.getElementById('scriptForm');
-            
-            if (scriptId) {
-                // Editar script existente
-                const script = window.scripts.find(s => s.id === scriptId);
-                if (script) {
-                    modalTitle.textContent = 'Editar Script';
-                    document.getElementById('scriptId').value = script.id;
-                    document.getElementById('scriptName').value = script.name;
-                    document.getElementById('scriptCategory').value = script.category;
-                    document.getElementById('scriptDescription').value = script.description;
-                    document.getElementById('scriptCode').value = script.code;
-                }
-            } else {
-                // Novo script
-                modalTitle.textContent = 'Adicionar Novo Script';
-                form.reset();
-                document.getElementById('scriptId').value = '';
-            }
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeAdminModal() {
-            document.getElementById('adminScriptModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // FUNÇÃO CORRIGIDA: Salvar script globalmente
-        function saveScript(event) {
-            event.preventDefault();
-
-            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
-                showToast('Acesso negado!', 'error');
-                return;
-            }
-
-            const scriptId = document.getElementById('scriptId').value;
-            const scriptData = {
-                name: document.getElementById('scriptName').value,
-                category: document.getElementById('scriptCategory').value,
-                description: document.getElementById('scriptDescription').value,
-                code: document.getElementById('scriptCode').value,
-                downloads: "0",
-                rating: "5.0",
-                addedBy: currentUser.username,
-                date: new Date().toLocaleDateString('pt-BR')
-            };
-
-            if (scriptId) {
-                // Editar
-                const index = window.scripts.findIndex(s => s.id === parseInt(scriptId));
-                if (index !== -1) {
-                    window.scripts[index] = { ...window.scripts[index], ...scriptData };
-                    showToast('Script atualizado com sucesso!', 'success');
-                }
-            } else {
-                // Novo - pegar o maior ID
-                const newId = Math.max(...window.scripts.map(s => s.id), 0) + 1;
-                window.scripts.push({ id: newId, ...scriptData });
-                showToast('Script adicionado com sucesso!', 'success');
-            }
-
-            // Salvar no storage GLOBAL
-            saveScripts();
-            closeAdminModal();
-        }
-
-        // FUNÇÃO CORRIGIDA: Editar script
-        function editScript(id) {
-            openAdminModal(id);
-        }
-
-        // FUNÇÃO CORRIGIDA: Deletar script globalmente
-        function deleteScript(id) {
-            if (!currentUser || currentUser.username !== 'SEANSCRIPTS') {
-                showToast('Acesso negado!', 'error');
-                return;
-            }
-
-            if (confirm('Tem certeza que deseja deletar este script?')) {
-                window.scripts = window.scripts.filter(s => s.id !== id);
-                // Salvar no storage GLOBAL
-                saveScripts();
-                showToast('Script deletado com sucesso!', 'success');
-            }
-        }
-
-        // Funções de filtro
-        function filterCategory(category) {
-            currentCategory = category;
-            
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.toLowerCase() === category || 
-                    (category === 'all' && btn.textContent === 'Todos')) {
-                    btn.classList.add('active');
-                }
-            });
-
-            displayScripts();
-        }
-
-        function filterScripts() {
-            currentSearch = document.getElementById('searchInput').value;
-            displayScripts();
-        }
-
-        // Funções utilitárias CORRIGIDAS
-        function copyScript(code) {
-            navigator.clipboard.writeText(code).then(() => {
-                showToast('✅ Script copiado!', 'success');
-            }).catch(() => {
-                // Fallback para mobile
-                const textarea = document.createElement('textarea');
-                textarea.value = code;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                showToast('✅ Script copiado!', 'success');
-            });
-        }
-
-        function downloadScript(name, code) {
-            const blob = new Blob([code], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${name.replace(/\s+/g, '_')}.lua`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showToast('⬇️ Download iniciado!', 'success');
         }
 
         function showToast(message, type = 'success') {
@@ -1360,22 +1885,12 @@
             toast.textContent = message;
             toast.className = `toast ${type}`;
             toast.classList.add('active');
-            
-            setTimeout(() => {
-                toast.classList.remove('active');
-            }, 2000);
+            setTimeout(() => toast.classList.remove('active'), 2000);
         }
 
-        // Fechar modais ao clicar fora
         window.onclick = function(event) {
-            const authModal = document.getElementById('authModal');
-            const adminModal = document.getElementById('adminScriptModal');
-            
-            if (event.target === authModal) {
-                closeModal();
-            }
-            if (event.target === adminModal) {
-                closeAdminModal();
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
             }
         }
     </script>
